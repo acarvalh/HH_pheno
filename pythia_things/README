@@ -1,0 +1,7 @@
+HH_pheno
+========
+make mainXX
+./mainXX
+
+table for pythia6 decays
+http://www-d0.fnal.gov/computing/MonteCarlo/simulation/pythia6129_decaytable.txt
