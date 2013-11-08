@@ -4,7 +4,7 @@
 sed -i -e 's/automatic_html_opening = True/automatic_html_opening = False/g' Cards/me5_configuration.txt
 
 #change the number of events to 3
-sed -i -E -e 's/[0-9]+ = nevents/500000 = nevents/g' Cards/run_card.dat
+sed -i -E -e 's/[0-9]+ = nevents/20000 = nevents/g' Cards/run_card.dat
 
 #change the CM energy to 8Tev
 sed -i -E -e 's/[0-9]+.*=.*ebeam1/4000     = ebeam1/g' Cards/run_card.dat
@@ -17,7 +17,7 @@ sed -i -E -e 's/25 [0-9]+?\.?[0-9]+?.* .*MH/25 1.250000e+02 \# MH/g' Cards/param
 mkdir Graviton_Parton
 
 # change the Graviton/mass  550 
-for i in 250 550 750 1000 1500 2000 2500 3000; do
+for i in 260 300 350 400 450 500; do
 
 sed -i -E -e "s/111 [0-9]+?\.?[0-9]+?.* \# MH02/111 $i \# MH02/g" Cards/param_card.dat
 sed -i -E -e "s/39 [0-9]+?\.?[0-9]+?.* \# MGr/39 $i \# MGr/g" Cards/param_card.dat
