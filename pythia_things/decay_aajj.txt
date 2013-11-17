@@ -163,8 +163,8 @@ DECAY        35  1.86496292E+02   # HH0   decays
       2.51996471E-03    2            3        -3                       # HL0    -->  ST     SB                 
       8.72675657E-01    2            5        -5                       # HL0    -->  BT     BB                 
       1.99386864E-06    2            2        -2                       # HL0    -->  UP     UB                 
-#      3.99496369E-02    2            4        -4                       # HL0    -->  CH     CB                    
-      1.86399519E-01    2           21        21                       # HL0    -->  GL     GL 
+      3.99496369E-02    2            4        -4                       # HL0    -->  CH     CB                    
+      1.86399519E-02    2           21        21                       # HL0    -->  GL     GL 
 #         PDG         Width
 DECAY        36  1.85878326E+02   # HA0   decays
 #          BR          NDA       ID1       ID2       ID3       ID4
