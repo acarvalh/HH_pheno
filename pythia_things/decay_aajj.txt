@@ -139,9 +139,23 @@ Block DCINFO                           # Program information
      1   ISASUGRA from ISAJET          # Spectrum Calculator
      2   7.80   29-OCT-2009 12:50:36   # Version number
 #         PDG         Width
+DECAY         6  1.14680767E+00   # TP    decays
+#          BR          NDA       ID1       ID2       ID3       ID4
+      3.33333343E-01    3            2        -1         5             # TP     -->  UP     DB     BT          
+      3.33333343E-01    3            4        -3         5             # TP     -->  CH     SB     BT          
+      1.11111112E-01    3          -11        12         5             # TP     -->  E+     NUE    BT          
+      1.11111112E-01    3          -13        14         5             # TP     -->  MU+    NUM    BT          
+      1.11111112E-01    3          -15        16         5             # TP     -->  TAU+   NUT    BT             
+#         PDG         Width
+
 DECAY        25  2.66789529E-03   # HL0   decays
 #          BR          NDA       ID1       ID2       ID3       ID4            
-      1.86399519E-01    2           22        2                       # HL0    -->   gamm   gamm         
+#      6.23677397E-06    2            1        -1                       # HL0    -->  DN     DB                 
+#      2.51996471E-03    2            3        -3                       # HL0    -->  ST     SB                 
+#      8.72675657E-01    2            5        -5                       # HL0    -->  BT     BB                 
+#      1.99386864E-06    2            2        -2                       # HL0    -->  UP     UB                 
+#      3.99496369E-02    2            4        -4                       # HL0    -->  CH     CB                    
+      1.86399519E-01    2           22        22                       # HL0    -->   gamm   gamm         
 #         PDG         Width
 DECAY        35  1.86496292E+02   # HH0   decays
 #          BR          NDA       ID1       ID2       ID3       ID4                
@@ -149,5 +163,36 @@ DECAY        35  1.86496292E+02   # HH0   decays
       2.51996471E-03    2            3        -3                       # HL0    -->  ST     SB                 
       8.72675657E-01    2            5        -5                       # HL0    -->  BT     BB                 
       1.99386864E-06    2            2        -2                       # HL0    -->  UP     UB                 
-      3.99496369E-02    2            4        -4                       # HL0    -->  CH     CB                    
+#      3.99496369E-02    2            4        -4                       # HL0    -->  CH     CB                    
       1.86399519E-01    2           21        21                       # HL0    -->  GL     GL 
+#         PDG         Width
+DECAY        36  1.85878326E+02   # HA0   decays
+#          BR          NDA       ID1       ID2       ID3       ID4
+      5.03979801E-12    2           11       -11                       # HA0    -->  E-     E+                 
+      2.12789345E-07    2           13       -13                       # HA0    -->  MU-    MU+                
+      6.09461167E-05    2           15       -15                       # HA0    -->  TAU-   TAU+               
+      6.10336537E-09    2            1        -1                       # HA0    -->  DN     DB                 
+      2.46606760E-06    2            3        -3                       # HA0    -->  ST     SB                 
+      5.10524609E-04    2            5        -5                       # HA0    -->  BT     BB                 
+      1.60663538E-09    2            2        -2                       # HA0    -->  UP     UB                 
+      1.89936236E-05    2            4        -4                       # HA0    -->  CH     CB                 
+      9.99167264E-01    2            6        -6                       # HA0    -->  TP     TB                 
+      9.46584464E-07    2           22        22                       # HA0    -->  GM     GM                 
+      1.08037646E-04    2           21        21                       # HA0    -->  GL     GL                 
+      5.35020672E-06    2      1000022   1000022                       # HA0    -->  Z1SS   Z1SS               
+      1.77461679E-05    2      1000022   1000023                       # HA0    -->  Z1SS   Z2SS               
+      9.96990002E-06    2           25        23                       # HA0    -->  HL0    Z0                 
+      8.20860546E-10    2      1000002  -2000002                       # HA0    -->  UPL    UBR                
+      8.20860546E-10    2      2000002  -1000002                       # HA0    -->  UPR    UBL                
+      4.77046669E-05    2      1000004  -2000004                       # HA0    -->  CHL    CBR                
+      4.77046669E-05    2      2000004  -1000004                       # HA0    -->  CHR    CBL                
+      2.56540922E-09    2      1000001  -2000001                       # HA0    -->  DNL    DBR                
+      2.56540922E-09    2      2000001  -1000001                       # HA0    -->  DNR    DBL                
+      1.03655520E-06    2      1000003  -2000003                       # HA0    -->  STL    SBR                
+      1.03655520E-06    2      2000003  -1000003                       # HA0    -->  STR    SBL                
+#         PDG         Width
+DECAY        37  1.73677628E+02   # H+    decays
+#          BR          NDA       ID1       ID2       ID3       ID4
+      3.3337114E-12    2           12       -11                       # H+     -->  NUE    E+                 
+      3.33363165E-07    2           14       -13                       # H+     -->  NUM    MU+                
+      3.33344697E-05    2           16       -15                       # H+     -->  NUT    TAU+   
