@@ -3,11 +3,39 @@
 // PYTHIA is licenced under the GNU GPL version 2, see COPYING for details.
 // Please respect the MCnet Guidelines, see GUIDELINES for details.
 
-#include <fstream>
 #include "Pythia.h"
+#include "HepMCInterface.h"
 
+#include "HepMC/GenEvent.h"   
+
+#include "HepMC/IO_GenEvent.h"
+//#include "HepMCInterface.h"
+
+//#include "HepMC/GenEvent.h"   
+
+//#include "HepMC/IO_GenEvent.h"
+// Following line is a deprecated alternative, removed in recent versions
+//#include "HepMC/IO_Ascii.h"
+
+//#include "HepMC/IO_AsciiParticles.h"
+
+// Following line to be used with HepMC 2.04 onwards.
+//#include "HepMC/Units.h"
+//#include <fstream>
 using namespace Pythia8;
 int main() {
+
+
+  // Interface for conversion from Pythia8::Event to HepMC one. 
+//  HepMC::I_Pythia8 ToHepMC;
+  //  ToHepMC.set_crash_on_problem();
+
+  // Specify file where HepMC events will be stored.
+//  HepMC::IO_GenEvent ascii_io(argv, std::ios::out);
+  // Following line is a deprecated alternative, removed in recent versions
+  // HepMC::IO_Ascii ascii_io("hepmcout32.dat", std::ios::out);
+  // Line below is an eye-readable one-way output, uncomment the include above
+  // HepMC::IO_AsciiParticles ascii_io("hepmcout32.dat", std::ios::out);
   // Generator. Shorthand for the event.
   Pythia pythia;
 
@@ -55,6 +83,12 @@ string namefile_out=namefile_in + ".pythia";
     pythia.readString(sfile.c_str());
     out_pythia.open(namefile_out.c_str());
  
+ // Interface for conversion from Pythia8::Event to HepMC event.
+  HepMC::I_Pythia8 ToHepMC;
+ 
+ // Specify file where HepMC events will be stored.
+ HepMC::IO_GenEvent ascii_io(namefile_out.c_str(), std::ios::out);
+
   // Allow for possibility of a few faulty events.
   int nAbort = 10;
   int iAbort = 0;
@@ -65,42 +99,19 @@ string namefile_out=namefile_in + ".pythia";
 
 
   // turn of hadronization settings - for testing  
-
+/*
 pythia.readString("PartonLevel:MI = off"); // Off multiple interactions
 pythia.readString("PartonLevel:ISR = off"); // Shower on
 pythia.readString("PartonLevel:FSR = off"); // Shower on
 pythia.readString("HadronLevel:all = off"); // Of hadronization
-
-//pythia.readString("SUSY:idB  = 0 ");
-//pythia.readString("SUSY:idVecB  = 0 ");
-/*
-//pythia.readString("35:mayDecay = no");
-pythia.readString("25:mayDecay = no");
-
-pythia.readString("35:onMode = off");
-// pythia.readString("25:onIfMatch = 5 -5"); // b
-// pythia.readString("25:onIfMatch = 4 -4"); // c
-// pythia.readString("25:onIfMatch = 21 21"); // gluon
-pythia.readString("35:onIfMatch = 24 24"); // W
-pythia.readString("24:mayDecay = no");
-
-
-pythia.readString("21:mayDecay = no");
-pythia.readString("4:mayDecay = no");
-pythia.readString("-4:mayDecay = no");
-pythia.readString("5:mayDecay = no");
-pythia.readString("-5:mayDecay = no");
-pythia.readString("5:mayDecay = no");
-pythia.readString("-5:mayDecay = no");
-pythia.readString("11:mayDecay = no");
-pythia.readString("-11:mayDecay = no");
-pythia.readString("13:mayDecay = no");
-pythia.readString("-13:mayDecay = no");
-
 */
-pythia.readString("SLHA:readFrom = 2");
-pythia.readString("SLHA:file = Susy.txt ");
 
+pythia.readString("HadronLevel:all = off"); // Of hadronization
+
+// read decay table
+pythia.readString("SLHA:readFrom = 2");
+pythia.readString("SLHA:file = Susy.txt "); // input the decay table
+// allow overwrite: only works for products of SM - like decays
 pythia.readString("SLHA:allowUserOverride = on ");
 pythia.readString("24:onMode = off");
 pythia.readString("-24:onMode = off");
@@ -110,22 +121,6 @@ pythia.readString("-24:onIfMatch = 12 -11"); // e ve
 pythia.readString("-24:onIfMatch = 14 -13"); // mu numu
 
 
-  // turn decays
-//  pythia.readString("HadronLevel:all = on"); // generic hadronization settings
-  // hadronic Higgs decay
-/*  pythia.readString("25:onMode = off");
-  8pythia.readString("25:onIfMatch = 5 5"); // b
-  pythia.readString("25:onIfMatch = 4 -4"); // c
-  pythia.readString("25:onIfMatch = 21 21"); // gluon
-  // WW "higgs" decay
-  pythia.readString("35:onMode = off");
-  pythia.readString("35:onIfMatch = 24 24"); // W
-  // W decay
-//  pythia.readString("24:onMode = off");
-//  pythia.readString("24:onIfMatch = 12 11"); // e ve
-//  pythia.readString("24:onIfMatch = 14 13"); // mu numu
-*/
-  // Initialization
   pythia.init();
 
   // Begin event loop; generate until none left in input file.
@@ -143,8 +138,10 @@ pythia.readString("-24:onIfMatch = 14 -13"); // mu numu
       if (++iAbort < nAbort) continue;
       break;
     }
+    cout<<"hi"<<endl;
+    // text output -- for test
 
-    // Acess event record
+/*    // Acess event record
     cout<<"Number of particles = "<<pythia.event.size()<<endl;
     
     vector<int> pID;
@@ -188,8 +185,22 @@ pythia.readString("-24:onIfMatch = 14 -13"); // mu numu
      for(unsigned i=0;i<E.size();i++){
        out_pythia<<pID.at(i)<<" "<<px.at(i)<<" "<<py.at(i)<<" "<<pz.at(i)<<" "<<E.at(i)<<" "<<endl;
      }
-    
+  */  
+    // Construct new empty HepMC event. Form with arguments is only
+    // meaningful for HepMC 2.04 onwards, and even then unnecessary  
+    // if HepMC was built with GeV and mm as units from the onset. 
+    HepMC::GenEvent* hepmcevt = new HepMC::GenEvent();
+    //HepMC::GenEvent* hepmcevt = new HepMC::GenEvent(
+    //  HepMC::Units::GEV, HepMC::Units::MM); 
 
+    // Fill HepMC event, including PDF info.
+    ToHepMC.fill_next_event( pythia, hepmcevt );
+    // This alternative older method fills event, without PDF info.
+    // ToHepMC.fill_next_event( pythia.event, hepmcevt );
+
+    // Write the HepMC event to file. Done with it.
+    ascii_io << hepmcevt;
+    delete hepmcevt;
   // End of event loop.
   }
 
