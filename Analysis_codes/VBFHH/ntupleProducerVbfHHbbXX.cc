@@ -71,7 +71,7 @@ bool isThisJetALepton(TLorentzVector* jet, TLorentzVector* l1, TLorentzVector* l
 bool analyse_4b(int countJets, int counttags, std::vector<int> tagentry);
 bool jets_semi_hadronic(int countJets, int counttags, std::vector<int> tagentry);
 bool analyse_2b2w(bool findlepton);
-//bool aabb analyse_2b2a();
+bool VBFjes(TLorentzVector* jet1,TLorentzVector* jet2);
 ////////////////////////////////////////////////////
 
 namespace po = boost::program_options;
