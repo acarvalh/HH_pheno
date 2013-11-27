@@ -93,7 +93,7 @@ pythia.readString("HadronLevel:all = off"); // Of hadronization
 
 // read decay table
 pythia.readString("SLHA:readFrom = 2");
-pythia.readString("SLHA:file = Susy.txt "); // input the decay table
+pythia.readString("SLHA:file = decay_jjjj.txt "); // input the decay table
 // allow overwrite: only works for products of SM - like decays
 pythia.readString("SLHA:allowUserOverride = on ");
 //pythia.readString("25:mayDecay = no"); 
