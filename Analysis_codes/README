@@ -1,1 +1,9 @@
-ble
+cd /afs/cern.ch/work/a/acarvalh/phenoHH/Delphes-3.0.10/LH-HH-Analysis
+cd ../../../CMSSW_5_3_9_patch1/
+cmsenv
+cd - 
+source setup_afs.sh
+cd -
+cmsenv
+cd -
+root -l
