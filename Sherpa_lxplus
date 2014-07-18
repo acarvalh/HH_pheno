@@ -1,8 +1,15 @@
 Location of 2.1.1 version
 
 Executable: 
+/afs/cern.ch/sw/lcg/external/MCGenerators_test/SHERPA-MPI/MCGenerators_lcgcmt67b/sherpa-mpi/2.1.1/x86_64-slc6-gcc48-opt/bin/Sherpa
 
-Examples folder: /afs/cern.ch/sw/lcg/external/MCGenerators_test/SHERPA-MPI/MCGenerators_lcgcmt67b/sherpa-mpi/2.1.1/..........
+Examples folder: 
+/afs/cern.ch/sw/lcg/external/MCGenerators_test/SHERPA-MPI/MCGenerators_lcgcmt67b/sherpa-mpi/2.1.1/..........
 
 To run from anywhere:
 
+As example we run the example in the folder
+
+/afs/cern.ch/sw/lcg/external/MCGenerators_test/SHERPA-MPI/MCGenerators_lcgcmt67b/sherpa-mpi/2.1.1/share/sources/Examples/Jets_at_HadronColliders/LHC_Jets_MCatNLO
+
+/afs/cern.ch/sw/lcg/external/MCGenerators_test/SHERPA-MPI/MCGenerators_lcgcmt67b/sherpa-mpi/2.1.1/x86_64-slc6-gcc48-opt/bin/Sherpa RESULT_DIRECTORY=/afs/cern.ch/work/a/aolivei/Sherpa_results/
